@@ -1,30 +1,17 @@
-//기본 타입
-let test = 'hello';
-let num = 0;
-let isFemale = true;
-//참조형
-let like = ['game', 'music', 'movie'];
-let dislike = ['study', 'homework', 'exercise'];
-let odd = [1, 3, 5];
-let even = [2, 4, 6];
-let abc = [true, false];
-let bbc = [true, false];
-//tuple : 배열에 들어가는 자료형이 다를때 배열의 순서마다 타입지정
-let arr1 = [3, '3'];
-//Student라는 커스텀 인터페이스 타입이 지정된 객체
-let student1 = {
-    name: 'David',
-    age: 20,
-    isFemale: false,
-    //address: 'Seoul',
-    1: 'C',
+//함수의 return값에 타입을 지전하면 비효울적인 이유
+//1. 이미 리턴된 값이기 때문에 타입오류가 뜨더라도 할 수 있는 작업이 없음
+//2. 에러자체가 호출단에서 발생하는게 아닌 함수정의단에서 리턴되는 시접에 발생하기때문에 호출시 오류파악이 힘듬
+const plus = (n1, n2) => {
+    return n1 + n2;
 };
-student1.name = 'andy';
-let student2 = {
-    name: 'Emily',
-    age: 30,
-    isFemale: true,
-    address: 'Busan',
-    2: 'B',
+const minus = (n1, n2) => {
+    return n1 - n2;
 };
-student2[2] = 'A';
+const multiply = (n1, n2) => {
+    return n1 * n2;
+};
+const divide = (n1, n2) => {
+    return n1 / n2;
+};
+const result = plus(3, 4);
+console.log(result);
