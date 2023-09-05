@@ -1,11 +1,13 @@
-//제네릭 generic : 타입의 적용을 정의할때 하는것이 아닌 호출할때 적용
-//generic은 들어오게되는 타입이 다양할때 활용
-const getLength = (arr) => {
-    return arr.length;
+const recipe = ['pie', 'cake', 'sandwitch'];
+const movieData = [
+    { title: 'One piece', grade: 15, genre: 'advanture', isSubtitle: true, vid: 'url' },
+    { title: 'flower', grade: 17, genre: 'drama', isSubtitle: true, vid: 'url' },
+    { title: 'tree', grade: 12, genre: 'fiction', isSubtitle: true, vid: 'url' },
+];
+const createList = (data) => {
+    console.log(data);
 };
-const arr1 = [1, 2, 3];
-const arr2 = ['red', 'green', 'blue'];
-const arr3 = [1, '2', 3];
-console.log(getLength(arr1));
-console.log(getLength(arr2));
-console.log(getLength(arr3));
+createList(movieData);
+createList(recipe);
+createList('abc');
+createList(2);
