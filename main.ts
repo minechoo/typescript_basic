@@ -25,3 +25,19 @@ const divide: Calc = (n1, n2) => {
 
 const result: number = plus(3, 4);
 console.log(result);
+
+const info = (num: number | string) => {
+	console.log(`${num}번째 방문자입니다`);
+};
+info('3');
+
+const test = (n1: number, n2: number, n3?: number) => {
+	// | falsy한 값이 들어오면 어떤것이든 대체값 적용
+	// ?? null, undefined이 들어왔을때에만 대체값 적용
+	// 잘못된값이 들어오는게 아닌 아예 들어오는 값이 없을때 대체값을 넣을떄에는 ?? 연산자 활용
+	const result = n1 + n2 + (n3 ?? 5);
+	return result;
+};
+
+//test(1, 2);
+console.log(test(1, 2, null));
