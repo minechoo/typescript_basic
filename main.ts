@@ -1,53 +1,16 @@
-//함수의 return값에 타입을 지전하면 비효울적인 이유
-//1. 이미 리턴된 값이기 때문에 타입오류가 뜨더라도 할 수 있는 작업이 없음
-//2. 에러자체가 호출단에서 발생하는게 아닌 함수정의단에서 리턴되는 시접에 발생하기때문에 호출시 오류파악이 힘듬
+//제네릭 generic : 타입의 적용을 정의할때 하는것이 아닌 호출할때 적용
+//generic은 들어오게되는 타입이 다양할때 활용
 
-//공통된 함수의 구조는 동일한 인터페이스 적용가능
-
-interface Calc {
-	(n1: number, n2: number): any;
-}
-const plus: Calc = (n1, n2) => {
-	return n1 + n2;
+const getLength = <type>(arr: type[]) => {
+	return arr.length;
 };
 
-const minus: Calc = (n1, n2) => {
-	return n1 - n2;
-};
+const arr1 = [1, 2, 3];
+const arr2 = ['red', 'green', 'blue'];
+const arr3 = [1, '2', 3];
 
-const multiply: Calc = (n1, n2) => {
-	return n1 * n2;
-};
+console.log(getLength<number>(arr1));
 
-const divide: Calc = (n1, n2) => {
-	return n1 / n2;
-};
+console.log(getLength<string>(arr2));
 
-const result: number = plus(3, 4);
-console.log(result);
-
-const info = (num: number | string) => {
-	console.log(`${num}번째 방문자입니다`);
-};
-info('3');
-
-const test = (n1: number, n2: number, n3?: number) => {
-	// | falsy한 값이 들어오면 어떤것이든 대체값 적용
-	// ?? null, undefined이 들어왔을때에만 대체값 적용
-	// 잘못된값이 들어오는게 아닌 아예 들어오는 값이 없을때 대체값을 넣을떄에는 ?? 연산자 활용
-	const result = n1 + n2 + (n3 ?? 5);
-	return result;
-};
-
-//test(1, 2);
-//console.log(test(1, 2, null));
-console.log(test(1, 2));
-
-// const test2 = (...nums: number[]) => {
-// 	console.log(nums);
-// };
-// test2(1, 2, 3, 4, 5);
-
-//reduce: 불변성 유지하면서 기존의 연산된값을 가져와서 현재값과 재연산하면서 누적된 결과값을 리턴
-const test2 = (...nums: number[]) => nums.reduce((acc, cur) => acc + cur, 0);
-console.log(test2(1, 2, 3, 4));
+console.log(getLength<string | number>(arr3));
